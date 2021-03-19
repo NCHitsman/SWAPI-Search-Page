@@ -51,7 +51,7 @@ const setInfo = async (apiObj) => {
                     for (let newLink of apiObj[key]) {
                         await linkSet(key.toUpperCase(), newLink);
                     }
-                } else if (typeof apiObj[key] == 'string' && apiObj[key].includes('http://')) {
+                } else if (typeof apiObj[key] == 'string' && apiObj[key].includes('https://')) {
                     await linkSet(key.toUpperCase(), apiObj[key]);
                 } else {
                     divPair.innerHTML = `${key.toUpperCase()}:  ${apiObj[key]}`
