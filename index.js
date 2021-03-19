@@ -78,14 +78,24 @@ selectionButton.addEventListener('click', async e => {
         infoDiv.innerHTML = ''
         category = categorySelect.value;
         idNumber = numberInput.value;
-
+        if (localStorage.getItem('backLink')) {
+            localStorage.setItem('backLink', [localStorage.getItem('backLink'), localStorage.getItem('newLink')])
+        } else {
+            localStorage.setItem('backLink', [localStorage.getItem('newLink')])
+        }
         numberInput.value = ''
-        await getResponse(`https://swapi.dev/api/${category}/${idNumber}`);
+        localStorage.setItem('newLink', `https://swapi.dev/api/${category}/${idNumber}`)
+        location.reload();
     } else if (searchBar.value) {
         infoDiv.innerHTML = ''
         let key = searchBar.value;
         key = key.toLowerCase().trim()
         let url = swapiDatabase[key];
+        if (localStorage.getItem('backLink')) {
+            localStorage.setItem('backLink', [localStorage.getItem('backLink'), localStorage.getItem('newLink')])
+        } else {
+            localStorage.setItem('backLink', [localStorage.getItem('newLink')])
+        }
         localStorage.setItem('newLink', url)
         location.reload()
     }
