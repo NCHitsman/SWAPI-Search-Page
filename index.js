@@ -85,7 +85,7 @@ reset.addEventListener('click', e => {
 async function getResponse(link) {
     let response = await fetch(link)
     let data = await response.json();
-    debugger;
+    console.log(response, data);
     localStorage.setItem('newLink', link)
     setInfo(data);
 }
