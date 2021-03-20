@@ -1,5 +1,5 @@
 // We use the object-creator.js function to create the object database stored in swapiObject and import it here for search functionality;
-import swapiDatabase from './swapiObject.json'
+import swapiDatabase from './swapiObject.js'
 
 
 //Here we set up all the veriables we will need below;
