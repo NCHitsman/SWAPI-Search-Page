@@ -87,7 +87,7 @@ async function getResponse(link) {
     let data = await response.json();
     debugger;
     localStorage.setItem('newLink', link)
-    setInfo(response);
+    setInfo(data);
 }
 
 
