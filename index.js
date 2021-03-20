@@ -28,7 +28,7 @@ selectionButton.addEventListener('click', async e => {
         } else {
             localStorage.setItem('backLink', [localStorage.getItem('newLink')])
         }
-        localStorage.setItem('newLink', `https://swapi.dev/api/${category}/${idNumber}`)
+        localStorage.setItem('newLink', `https://swapi.dev/api/${category}/${idNumber}/`)
         location.reload();
     } else if (searchBar.value) {
         let key = searchBar.value;
