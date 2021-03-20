@@ -83,7 +83,9 @@ reset.addEventListener('click', e => {
 
 //The function that takes a link and sends a request for data to the server using fetch;
 async function getResponse(link) {
-    let response = await fetch(link).then(res => res.json())
+    let response = await fetch(link)
+    let data = await response.json();
+    debugger;
     localStorage.setItem('newLink', link)
     setInfo(response);
 }
