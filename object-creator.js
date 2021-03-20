@@ -1,3 +1,6 @@
+
+// *** DO NOT RUN! ONLY NEEDED TO BE RUN ONCE TO CREATE THE OBJECT FOUND IN swapiObject.js
+
 const fetch = require('node-fetch')
 const fs = require('fs')
 
