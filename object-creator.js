@@ -11,7 +11,7 @@ const creator = async () => {
     for (let category of cats) {
         let counter = 0;
         for (let i = 1; i < Infinity; i++) {
-            let currentObj = await fetch(`https://swapi.dev/api/${category}/${i}`)
+            let currentObj = await fetch(`https://swapi.dev/api/${category}/${i}/`)
                 .then(a => {
                     if (a.ok) {
                         return a.json()
@@ -26,8 +26,8 @@ const creator = async () => {
                     name = currentObj[key].toLowerCase().trim();
                     break;
                 }
-                fullObj[name] = `https://swapi.dev/api/${category}/${i}`;
-                console.log(name, `https://swapi.dev/api/${category}/${i}`)
+                fullObj[name] = `https://swapi.dev/api/${category}/${i}/`;
+                console.log(name, `https://swapi.dev/api/${category}/${i}/`)
             } else {
                 counter++
                 if (counter == 15) {

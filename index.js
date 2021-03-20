@@ -1,5 +1,5 @@
 // We use the object-creator.js function to create the object database stored in swapiObject and import it here for search functionality;
-import swapiDatabase from './swapiObject.js'
+import swapiDatabase from './swapiObject.json'
 
 
 //Here we set up all the veriables we will need below;
@@ -83,11 +83,9 @@ reset.addEventListener('click', e => {
 
 //The function that takes a link and sends a request for data to the server using fetch;
 async function getResponse(link) {
-    let response = await fetch(link)
-    let data = await response.json();
-    console.log(response, data);
+    let response = await fetch(link).then(res => res.json())
     localStorage.setItem('newLink', link)
-    setInfo(data);
+    setInfo(response);
 }
 
 
