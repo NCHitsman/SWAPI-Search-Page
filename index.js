@@ -21,7 +21,6 @@ if (localStorage.getItem('newLink')) {
 //This is the listener attached to the Search button, it will listen for 1) a category and id number, or 2) an input in the search bar;
 selectionButton.addEventListener('click', async e => {
     if (numberInput.value) {
-        infoDiv.innerHTML = ''
         let category = categorySelect.value;
         let idNumber = numberInput.value;
         if (localStorage.getItem('backLink')) {
@@ -29,11 +28,9 @@ selectionButton.addEventListener('click', async e => {
         } else {
             localStorage.setItem('backLink', [localStorage.getItem('newLink')])
         }
-        numberInput.value = ''
         localStorage.setItem('newLink', `https://swapi.dev/api/${category}/${idNumber}`)
         location.reload();
     } else if (searchBar.value) {
-        infoDiv.innerHTML = ''
         let key = searchBar.value;
         key = key.toLowerCase().trim()
         let url = swapiDatabase[key];
@@ -67,7 +64,6 @@ infoDiv.addEventListener('click', async e => {
 //The listener attachted to the back button. Will take you back to your recent pages;
 back.addEventListener('click', e => {
     if (localStorage.getItem('backLink')) {
-        infoDiv.innerHTML = ''
         let backArr = localStorage.getItem('backLink').split(',');
         let backLast = backArr[backArr.length - 1];
         backArr.pop()
