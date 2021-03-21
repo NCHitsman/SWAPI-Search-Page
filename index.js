@@ -28,7 +28,7 @@ selectionButton.addEventListener('click', async e => {
         } else {
             localStorage.setItem('backLink', [localStorage.getItem('newLink')])
         }
-        localStorage.setItem('newLink', `https://swapi.dev/api/${category}/${idNumber}`)
+        localStorage.setItem('newLink', `https://swapi.dev/api/${category}/${idNumber}/`)
         location.reload();
     } else if (searchBar.value) {
         let key = searchBar.value;
@@ -88,6 +88,7 @@ async function getResponse(link) {
     setInfo(response);
 }
 
+const replaceHTTPwithHTTPS = (s) => s.replace("http://", "https://");
 
 //This function is responsable for filling the HTML with the required elements to present the passed in data;
 async function setInfo(apiObj) {
@@ -104,10 +105,11 @@ async function setInfo(apiObj) {
             if (apiObj[key]) {
                 if (Array.isArray(apiObj[key])) {
                     for (let newLink of apiObj[key]) {
+                        newLink = replaceHTTPwithHTTPS(newLink);
                         await linkSet(key.toUpperCase(), newLink);
                     }
-                } else if (typeof apiObj[key] == 'string' && apiObj[key].includes('https://')) {
-                    await linkSet(key.toUpperCase(), apiObj[key]);
+                } else if (typeof apiObj[key] == 'string' && (apiObj[key].includes('http://') || apiObj[key].includes("https://"))) {
+                    await linkSet(key.toUpperCase(), replaceHTTPwithHTTPS(apiObj[key]));
                 } else {
                     divPair.innerHTML = `${key.toUpperCase()}:  ${apiObj[key]}`
                     divPair.classList.add('text')
